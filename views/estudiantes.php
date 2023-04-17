@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <title>Title</title>
@@ -11,6 +11,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+  <!-- BOOTSTRAP ICONS-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+  <!-- Lightbox CSS-->
+  <link rel="stylesheet" href="../dist/lightbox2/src/css/lightbox.css">
+
 </head>
 
 <body>
@@ -19,11 +25,11 @@
       <div class="card-header bg-primary text-ligth">
         <div class="row">
           <div class="col-md-6">
-            <strong>LISTA DE USUARIOS</strong>
+            <strong></strong>
           </div>
 
           <div class="col-md-6 text-end">
-            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-usuarios"><i class="bi bi-plus-circle-fill"></i>Agregar Usuario
+            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-usuarios"><i class="bi bi-plus-circle-fill"></i>Agregar
             </button>
 
           </div>
@@ -33,13 +39,7 @@
       <div class="card-body">
         <table class="table table-sm table-striped" id="tabla-estudiantes">
           <colgroup>
-            <col width = "5%"> 
-            <col width = "20%">
-            <col width = "20%">
-            <col width = "15%">
-            <col width = "10%">
-            <col width = "20%">
-            <col width = "10%">
+          
           </colgroup>
           <thead>
           <tr>
@@ -60,7 +60,7 @@
         </table>
       </div>
       <div class="card-footer text-es">
-        <a href="../controllers/usuario.controller.php?operacion=finalizar"><i class="bi bi-box-arrow-left"></i>Cerrar Sesion</a>
+        <a href="../controllers/usuario.controller.php?operacion=finalizar"><i class="bi bi-box-arrow-left"></i></a>
         </button>
       </div>
     </div>
@@ -68,6 +68,7 @@
 
   
   <!-- Modal trigger button -->
+  <div class="col-md-11 text-end">
   <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
     Registro
   </button>
@@ -172,6 +173,9 @@
   <!--Sweet alert-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <!-- Lightbox CSS-->
+  <script src="../dist/lightbox2/src/js/lightbox.js"></script>
+
 
   <script>
     $(document).ready(function (){
@@ -252,6 +256,18 @@
           }
         });
       }
+
+      function mostrarEstudiantes(){
+        $.ajax({
+          url: '../controllers/estudiante.controller.php',
+          type: 'POST',
+          data: {operacion: 'Listar'},
+          dataType: 'text',
+          success: function(result){
+            $("#tabla-estudiantes tbody").html(result);
+          }
+        });
+      }
     
       $("#guardar-estudiante").click(preguntarRegistro);
 
@@ -283,6 +299,9 @@
         obtenerSedes();
         obtenerEscuelas();
       });
+
+      //Funciones de carga automatica
+      mostrarEstudiantes();
 
     });
   </script>
