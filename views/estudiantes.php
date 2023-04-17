@@ -14,16 +14,35 @@
 </head>
 
 <body>
-  
-  <!-- Modal trigger button -->
-  <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
-    Registro
-  </button>
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header bg-primary text-ligth">
+        <div class="row">
+          <div class="col-md-6">
+            <strong>LISTA DE USUARIOS</strong>
+          </div>
 
-  <div class="container">
-    <table id="tabla-estudiantes" class="table table-striped table-sm">
-      <thead>
-        <tr>
+          <div class="col-md-6 text-end">
+            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-usuarios"><i class="bi bi-plus-circle-fill"></i>Agregar Usuario
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <table class="table table-sm table-striped" id="tabla-estudiantes">
+          <colgroup>
+            <col width = "5%"> 
+            <col width = "20%">
+            <col width = "20%">
+            <col width = "15%">
+            <col width = "10%">
+            <col width = "20%">
+            <col width = "10%">
+          </colgroup>
+          <thead>
+          <tr>
           <th>#</th>
           <th>Apellidos</th>
           <th>Nombres</th>
@@ -33,12 +52,27 @@
           <th>Carrera</th>
           <th>Operaciones</th>
         </tr>
-      </thead>
-      <tbody>
-        
-      </tbody>
-    </table>
-  </div>
+
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer text-es">
+        <a href="../controllers/usuario.controller.php?operacion=finalizar"><i class="bi bi-box-arrow-left"></i>Cerrar Sesion</a>
+        </button>
+      </div>
+    </div>
+  </div> <!-- Fin de container-->
+
+  
+  <!-- Modal trigger button -->
+  <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
+    Registro
+  </button>
+
+
   
   <!-- Modal Body -->
   <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
