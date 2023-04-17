@@ -98,6 +98,7 @@
               </div>
           </div>
 
+      
           <div class="row">
               <div class="mb-3 col-md-6">
               <label for="tipodocumento" class="form-label">Tipo Documento:</label>
