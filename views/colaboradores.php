@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <title>ESTUDIANTES</title>
+  <title>COLABORADORES</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,42 +14,30 @@
   <!-- BOOTSTRAP ICONS-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
-  <!-- Lightbox CSS-->
-  <link rel="stylesheet" href="../dist/lightbox2/src/css/lightbox.css">
+  
 
 </head>
 
-<body>
+  <!-- Modal trigger button -->
+  <div class="col-md-6 text-left">
+  <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-colaborador"><i class="bi bi-person-plus-fill">Registro COLAB</i>
+  </button>
+</div>
+
+  <body>
   <div class="container mt-3">
-    <div class="card">
-      <div class="card-header bg-primary text-ligth">
-        <div class="row">
-          <div class="col-md-6">
-            <strong></strong>
-          </div>
-
-          <div class="col-md-6 text-end">
-            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-usuarios"><i class="bi bi-plus-circle-fill"></i>Agregar
-            </button>
-
-          </div>
-        </div>
-
-      </div>
+    <div class="row">
       <div class="card-body">
-        <table class="table table-sm table-striped" id="tabla-estudiantes">
-          <colgroup>
-          
-          </colgroup>
+        <table class="table table-sm table-striped" id="tabla-colaborador">
           <thead>
           <tr>
           <th>#</th>
           <th>Apellidos</th>
           <th>Nombres</th>
-          <th>Tipo</th>
-          <th>Documento</th>
-          <th>Nacimiento</th>
-          <th>Carrera</th>
+          <th>Cargo</th>
+          <th>Sede</th>
+          <th>Telefono</th>
+          <th>Tipo contraro</th>
           <th>Operaciones</th>
         </tr>
 
@@ -59,19 +47,10 @@
           </tbody>
         </table>
       </div>
-      <div class="card-footer text-es">
-        <a href="../controllers/usuario.controller.php?operacion=finalizar"><i class="bi bi-box-arrow-left"></i></a>
-        </button>
-      </div>
+    
     </div>
   </div> <!-- Fin de container-->
 
-  
-  <!-- Modal trigger button -->
-  <div class="col-md-11 text-end">
-  <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
-    Registro
-  </button>
 
 
   
@@ -181,32 +160,6 @@
   <script>
     $(document).ready(function (){
 
-      function obtenerSedes(){
-        $.ajax({
-          url: '../controllers/sede.controller.php',
-          type: 'POST',
-          data: {operacion: 'listar'},
-          dataType: 'text',
-          success: function(result){
-            $("#sede").html(result);
-          }
-
-        });
-      }
-
-
-      function obtenerEscuelas(){
-        $.ajax({
-          url: '../controllers/escuela.controller.php',
-          type: 'POST',
-          data: {operacion: 'listar'},
-          dataType: 'text',
-          success: function(result){
-            $("#escuela").html(result);
-          }
-
-        });
-      }
 
       function registrarEstudiante(){
         //Enviaremos los datos dentro de un OBJETO
@@ -258,19 +211,19 @@
         });
       }
 
-      function mostrarEstudiantes(){
+      function mostrarColaboradores(){
         $.ajax({
-          url: '../controllers/estudiante.controller.php',
+          url: '../controllers/colaborador.controller.php',
           type: 'POST',
           data: {operacion: 'Listar'},
           dataType: 'text',
           success: function(result){
-            $("#tabla-estudiantes tbody").html(result);
+            $("#tabla-colaborador tbody").html(result);
           }
         });
       }
     
-      $("#guardar-estudiante").click(preguntarRegistro);
+      $("#guardar-colaborador").click(preguntarRegistro);
 
 
 
@@ -302,7 +255,7 @@
       });
 
       //Funciones de carga automatica
-      mostrarEstudiantes();
+      mostrarColaboradores();
 
     });
   </script>
